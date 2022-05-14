@@ -2,12 +2,19 @@ interface Vehicle {
     name: string,
     plate: string,
     color: string,
-    date: Date
+    date: Date | string
 }
 
 (function() {
      const htmlElement = ( query: string ): HTMLInputElement | null => document.querySelector(query);
 
+
+     function calcTime(mil: number) {
+         const minutes = Math.floor(mil / 60000);
+         const seconds = Math.floor((mil % 60000 / 1000));
+
+         return `${minutes}m e ${seconds}s`
+     }
 
      function patio(){
 
@@ -19,7 +26,7 @@ interface Vehicle {
             <td>${vehicle.color}</td>
             <td>${vehicle.plate}</td>
             <td>${vehicle.date}</td>
-            <td><button class="delete" data-plate="${vehicle.plate}"><img src="/assets/svg/icon_delete.svg" alt="icone de lixeira"></button></td>
+            <td><button class="delete" data-plate="${vehicle.plate}" type="submit"><img src="/assets/svg/icon_remove.svg" alt="icone de lixeira"></button></td>
         `;  
 
             row.querySelector('.delete')?.addEventListener('click', function() {
@@ -49,7 +56,16 @@ interface Vehicle {
         }
 
         function remove(plate: string) {
-            const { date, name } = read().find(vehicle => vehicle.plate === plate)
+            const {date, name} = read().find((vehicle) => vehicle.plate === plate) //.find((vehicle) => vehicle.plate === plate);
+            console.log(date, name)
+            const time = calcTime(new Date().getTime() - new Date(date).getTime());
+
+            if(!confirm(`O veículo ${name} permaneceu por ${time}. Deseja Encerrar?`))
+            return;
+
+            save(read().filter((vehicle) => vehicle.plate !== plate));
+            render();
+
         }
 
         return {read, add, remove, save, render}
@@ -65,9 +81,7 @@ interface Vehicle {
              return;
          }
 
-         patio().add({ name, plate, color, date: new Date() }, true)
-
-         //patio().render();
+         patio().add({ name, plate, color, date: new Date().toISOString() }, true)
      })
 
      patio().render();
