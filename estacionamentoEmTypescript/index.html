@@ -8,19 +8,66 @@
     <title>Estacionamento</title>
 </head>
 <body>
+    <header>
+        <h1>Sistema de Estacionamento</h1>
+    </header>
     <main>
-        <header>
-            <h1>Sistema de Estacionamento</h1>
-        </header>
-
-        <section>
-            <input type="text" id="name" placeholder="Digite o nome do veículo: " autocomplete="off">
-            <input type="text" id="color" placeholder="Digite a cor do veículo: " autocomplete="off">
-            <input type="text" id="plate" placeholder="Digite a placa do veículo: " autocomplete="off">
+        <section id="inputs">
+            <h2>Cadastro de carros no Pátio</h2>
+            <div id="inputList">
+                <input type="text" id="name" class="input" placeholder="Digite o nome do veículo: " autocomplete="off">
+                <input type="text" id="color" class="input" placeholder="Digite a cor do veículo: " autocomplete="off">
+                <input type="text" id="plate" class="input" placeholder="Digite a placa do veículo: " autocomplete="off">
+            </div>
             <button id="btn" type="submit">Cadastrar</button>
         </section>
 
-        <section>
+        <section id="parking">
+            <div id="textParking">
+                <h3>Balanço de vagas</h3>
+            </div>
+
+            <div id="vacancyGrafc">
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+                <div class="vacancy"></div>
+            </div>
+
+            <div id="footerParking">
+                <p>Total de vagas: <span id="vacancys">30</span></p>
+                <p>Disponiveis: <span id="availables">15</span></p>
+                <p>Vagas ocupadas: <span id="occupieds">15</span></p>
+            </div>
+        </section>
+
+        <section id="outputs">
             <table>
                 <thead>
                     <tr>
@@ -36,7 +83,6 @@
             </table>
         </section>
     </main>
-
-    <script src="/assets/script.js"></script>
+    <script src="/assets/ts/script.js"></script>
 </body>
 </html>
